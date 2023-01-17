@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+
+<h2>Portfolios Overview</h2>
+
+<div class="container">
+  <% @portfolios.each do |portfolio| %>
+    <div class="item">
+      <%= portfolio.name %><br>
+      <%= link_to "Show this portfolio", portfolio %>
+    </div>
+  <% end %>
+</div>

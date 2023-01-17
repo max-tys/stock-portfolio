@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Stock Portfolio</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "reset" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <header>
+      <h1>Stocks Portfolio</h1>
+    </header>
+
+    <nav>
+      <ul>
+        <li>
+          <%= link_to "All Portfolios" , portfolios_path %>
+        </li>
+        <li>
+          <%= link_to "New Portfolio", new_portfolio_path %>
+        </li>
+        <li>Logout</li>
+      </ul>
+    </nav>
+
+    <main>
+      <%= yield %>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,4 @@
+<div class="item">
+  <%= holding.symbol %><br>
+  <%= link_to "Destroy Holding", [holding.portfolio, holding], data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+</div>

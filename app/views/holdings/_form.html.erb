@@ -1,0 +1,10 @@
+<%= form_with model: [ @portfolio, @portfolio.holdings.build ] do |form| %>
+  <p>
+    <%= form.label :symbol %><br>
+    <%= form.text_field :symbol %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end%>
