@@ -6,20 +6,24 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Nunito&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag "reset" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <header>
-      <h1>Stocks Portfolio</h1>
-    </header>
-
     <nav>
+      <div class="flex-container">
+        <%= image_tag("bull-market.png", :id => "logo-img") %>
+        <span id="logo-text">Stock Portfolio</span>
+      </div>
+
       <ul>
         <li>
-          <%= link_to "All Portfolios" , portfolios_path %>
+          <%= link_to "Overview" , portfolios_path %>
         </li>
         <li>
           <%= link_to "New Portfolio", new_portfolio_path %>

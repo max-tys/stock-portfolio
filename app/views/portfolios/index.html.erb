@@ -2,11 +2,21 @@
 
 <h2>Portfolios Overview</h2>
 
-<div class="container">
-  <% @portfolios.each do |portfolio| %>
-    <div class="item">
-      <%= portfolio.name %><br>
-      <%= link_to "Show this portfolio", portfolio %>
-    </div>
-  <% end %>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Portfolio Name</th>
+      <th>Current Value</th>
+      <th>Cost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @portfolios.each_with_index do |portfolio, idx| %>
+      <tr onclick="window.location='<%= portfolio_path(portfolio) %>';" style='cursor: pointer;'>
+        <td><%= portfolio.name %></td>
+        <td>$0</td>
+        <td>$0</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
