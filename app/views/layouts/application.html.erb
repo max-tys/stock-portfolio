@@ -16,18 +16,15 @@
 
   <body>
     <nav>
-      <div class="flex-container">
-        <%= image_tag("bull-market.png", :id => "logo-img") %>
-        <span id="logo-text">Stock Portfolio</span>
-      </div>
+      <%= link_to root_path do %>
+        <div class="logo-container">
+          <%= image_tag("bull-market.png") %>
+          <p>Stock Portfolio</p>
+        </div>
+      <% end %>
 
       <ul>
-        <li>
-          <%= link_to "Overview" , portfolios_path %>
-        </li>
-        <li>
-          <%= link_to "New Portfolio", new_portfolio_path %>
-        </li>
+        <li><%= link_to "Overview" , portfolios_path %></li>
         <li>Logout</li>
       </ul>
     </nav>

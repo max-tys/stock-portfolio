@@ -1,9 +1,27 @@
 <p style="color: green"><%= notice %></p>
 
 <h2>Holdings in <%= @portfolio.name %></h2>
-  <div class="container">
-    <%= render @portfolio.holdings %>
-  </div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Name</th>
+      <th>Cost</th>
+      <th>Current Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @portfolio.holdings.each do |holding| %>
+      <tr onclick="window.location='<%= portfolio_holding_path(@portfolio, holding) %>';" style='cursor: pointer;'>
+        <td><%= holding.symbol %></td>
+        <td>(Name)</td>
+        <td>$0</td>
+        <td>$0</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <h2>Add a holding</h2>
 <div class="container">

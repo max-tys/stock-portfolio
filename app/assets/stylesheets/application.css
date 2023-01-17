@@ -16,6 +16,16 @@ body {
   margin: auto;
 }
 
+a {
+  text-decoration: none;
+}
+
+button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Merriweather', serif;
   text-align: center;
@@ -31,12 +41,50 @@ nav {
   padding: 1rem;
 }
 
+nav a:hover {
+  font-weight: bold;
+}
+
 nav a:visited {
   color: white;
 }
 
-nav a:hover {
+li {
+  text-align: center;
+  padding: 0 1rem;
+}
+
+table {
+  border-radius: 0.3rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
+  margin: 1rem auto;
+  min-width: 40%;
+  overflow: hidden;
+}
+
+thead tr {
+  background-color: #4D6B06;
+  color: white;
   font-weight: bold;
+}
+
+th, td {
+  padding: 1rem 2rem;
+  text-align: center;
+}
+
+tbody tr {
+  background-color: white;
+  border-bottom: 1px solid #8D8F00;
+}
+
+tbody tr:last-of-type {
+  border-bottom: 0.15rem solid #4D6B06;
+}
+
+tbody tr:hover {
+  background-color: #F3F9E3;
+  color: #4D6B06;
 }
 
 ul {
@@ -45,65 +93,20 @@ ul {
   justify-content: space-around;
 }
 
-li {
-  text-align: center;
-  padding: 0 1rem;
-}
-
-a {
-  text-decoration: none;
-}
-
-table {
-  border-radius: 0.3rem;
-  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
-  margin: 1rem auto;
-  overflow: hidden;
-}
-thead tr {
-  background-color: #4D6B06;
-  color: white;
-  font-weight: bold;
-}
-th, td {
-  padding: 1rem 2rem 1rem 1rem;
-  text-align: center;
-}
-tbody tr {
-  background-color: white;
-  border-bottom: 1px solid #8D8F00;
-}
-tbody tr:last-of-type {
-  border-bottom: 0.15rem solid #4D6B06;
-}
-tbody tr:hover {
-  background-color: #F3F9E3;
-  color: #4D6B06;
-}
-
-.flex-container {
+.logo-container {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
   align-items: center;
 }
 
-/* .flex-item {
-  border: 1px black solid;
-  border-radius: 0.5rem;
-  padding: 1rem;
-  margin: 1rem;
-  min-width: 300px;
-  text-align: center;
-} */
+.logo-container img {
+  height: 2.2rem;
+}
 
-#logo-text {
+.logo-container p {
   font-size: 1.3rem;
   font-family: 'Merriweather', serif;
   font-weight: bold;
   padding-left: 0.8rem;
-}
-
-#logo-img {
-  height: 2.2rem;
 }
