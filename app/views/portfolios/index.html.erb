@@ -1,24 +1,27 @@
 <p style="color: green"><%= notice %></p>
 
-<h2>Portfolios Overview</h2>
+<article>
+  <div class="article-header">
+    <h2>Portfolios Overview</h2>
+    <%= button_to "New Portfolio", new_portfolio_path, method: :get %>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Portfolio Name</th>
-      <th>Current Value</th>
-      <th>Cost</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @portfolios.each_with_index do |portfolio, idx| %>
-      <tr onclick="window.location='<%= portfolio_path(portfolio) %>';" style='cursor: pointer;'>
-        <td><%= portfolio.name %></td>
-        <td>$0</td>
-        <td>$0</td>
+  <table>
+    <thead>
+      <tr>
+        <th>Portfolio Name</th>
+        <th>Current Value</th>
+        <th>Cost</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<%= button_to "New Portfolio", new_portfolio_path, method: :get %>
+    </thead>
+    <tbody>
+      <% @portfolios.each_with_index do |portfolio, idx| %>
+        <tr onclick="window.location='<%= portfolio_path(portfolio) %>';" style='cursor: pointer;'>
+          <td><%= portfolio.name %></td>
+          <td>$0</td>
+          <td>$0</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</article>

@@ -1,7 +1,7 @@
 /* https://coolors.co/0d160b-4d6b06-8dbf00-c6d568-e3e6aa-fff6eb-d1b19b-a37765-785349 */
 
 html {
-  background-color: #fdfcfb;
+  background-color: hsl(0 0% 95%);
   box-sizing: border-box;
   font-family: 'Nunito', sans-serif;
   font-size: 18px;
@@ -20,6 +20,16 @@ a {
   text-decoration: none;
 }
 
+article {
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
+  margin: 2rem auto;
+  padding: 2rem 10%;
+  width: 80%;
+}
+
 button, 
 input[type=submit] {
   background-color: #00241B;
@@ -29,7 +39,6 @@ input[type=submit] {
   color: white;
   cursor: pointer;
   font-size: 1rem;
-  margin-top: 1rem;
   padding: 1rem 1.5rem;
   transition: 0.2s all;
 }
@@ -49,8 +58,6 @@ input[type=submit]:active {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Merriweather', serif;
-  text-align: center;
-  padding: 2rem 0 1rem 0;
 }
 
 input[type=text] {
@@ -98,8 +105,7 @@ table {
   border-radius: 0.3rem;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
   margin: 1rem auto;
-  min-width: 50%;
-  max-width: 80%;
+  width: 100%;
   overflow: hidden;
 }
 
@@ -115,7 +121,7 @@ th, td {
 }
 
 tbody tr {
-  background-color: white;
+  background-color: #fdfcfb;
   border-bottom: 1px solid #8D8F00;
 }
 
@@ -132,6 +138,13 @@ ul {
   list-style-type: none;
   display: flex;
   justify-content: space-around;
+}
+
+.article-header {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .form-container {
@@ -160,4 +173,10 @@ ul {
   font-family: 'Merriweather', serif;
   font-weight: bold;
   padding-left: 0.8rem;
+}
+
+@media screen and (min-width: 1400px) {
+  article {
+    width: 100%;
+  }
 }
