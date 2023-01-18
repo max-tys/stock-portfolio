@@ -14,7 +14,7 @@ class HoldingsController < ApplicationController
       if @new_holding.save
         format.html { redirect_to portfolio_path(@portfolio), notice: "Added #{@new_holding.symbol} to portfolio." }
       else
-        format.html { render 'portfolios/show', status: :unprocessable_entity }
+        format.html { render "portfolios/show", status: :unprocessable_entity }
       end
     end
   end
