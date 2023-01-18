@@ -8,12 +8,4 @@
   <%= render "portfolio", portfolios: @portfolios %>
 </article>
 
-<div class="form-container">
-  <h2>Add a portfolio</h2>
-  <%= form_with model: @portfolio do |form| %>
-    <%= field_set_tag do %>
-      <%= form.text_field :name, placeholder: "Portfolio Name" %>
-      <%= form.submit "Create Portfolio" %>
-    <% end %>
-  <% end %>
-</div>
+<%= render "form", portfolio: @portfolio, title: "Add Portfolio" %>
