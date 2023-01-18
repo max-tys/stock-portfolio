@@ -1,7 +1,7 @@
 /* https://coolors.co/0d160b-4d6b06-8dbf00-c6d568-e3e6aa-fff6eb-d1b19b-a37765-785349 */
 
 html {
-  background-color: white;
+  background-color: #fdfcfb;
   box-sizing: border-box;
   font-family: 'Nunito', sans-serif;
   font-size: 18px;
@@ -12,7 +12,7 @@ html {
 }
 
 body {
-  max-width: 1920px;
+  max-width: 1400px;
   margin: auto;
 }
 
@@ -24,7 +24,7 @@ button,
 input[type=submit] {
   background-color: #00241B;
   border: none;
-  border-radius: 5px;
+  border-radius: 2rem;
   box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
   color: white;
   cursor: pointer;
@@ -98,7 +98,8 @@ table {
   border-radius: 0.3rem;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
   margin: 1rem auto;
-  min-width: 40%;
+  min-width: 50%;
+  max-width: 80%;
   overflow: hidden;
 }
 
