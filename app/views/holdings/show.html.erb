@@ -1,23 +1,21 @@
-<p style="color: green"><%= notice %></p>
-
 <h4>Portfolio: <%= @portfolio.name %></h4>
 
-<h2>List of Holdings</h2>
+<h2>Transactions for ($name) (<%= @holding.symbol %>)</h2>
 
 <table>
   <thead>
     <tr>
-      <th>Symbol</th>
-      <th>Name</th>
+      <th>Shares</th>
       <th>Cost</th>
-      <th>Current Value</th>
+      <th>Value</th>
+      <th>Total</th>
     </tr>
   </thead>
   <tbody>
     <% @portfolio.holdings.each do |holding| %>
       <tr onclick="window.location='<%= portfolio_holding_path(@portfolio, holding) %>';" style='cursor: pointer;'>
-        <td><%= holding.symbol %></td>
-        <td>(Name)</td>
+        <td>0</td>
+        <td>$0</td>
         <td>$0</td>
         <td>$0</td>
       </tr>
@@ -26,9 +24,8 @@
 </table>
 
 <div class="form-container">
-  <h2>Add a holding</h2>
+  <h2>Add a transaction</h2>
   <%= render 'holdings/form' %>
 </div>
 
-<%= button_to "Edit this portfolio", edit_portfolio_path(@portfolio), method: :get %>
-<%= button_to "Destroy this portfolio", @portfolio, method: :delete %>
+<%= button_to "Destroy Holding", @portfolio, method: :delete %>

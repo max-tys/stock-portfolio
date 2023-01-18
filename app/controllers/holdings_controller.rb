@@ -12,6 +12,11 @@ class HoldingsController < ApplicationController
     redirect_to portfolio_path(@portfolio), status: :see_other
   end
 
+  def show
+    @portfolio = Portfolio.find(params[:portfolio_id])
+    @holding = @portfolio.holdings.find(params[:id])
+  end
+
   private
 
   # Only allow a list of trusted parameters through.
