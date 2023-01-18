@@ -10,7 +10,7 @@
   </thead>
   <tbody>
     <% portfolio.holdings.each do |holding| %>
-      <tr onclick="window.location='<%= portfolio_holding_path(portfolio, holding) %>';" style='cursor: pointer;'>
+      <tr onclick="window.location='<%= holding_path(holding) %>';" style='cursor: pointer;'>
         <td><%= holding.symbol %></td>
         <td>(Name)</td>
         <td>0</td>
