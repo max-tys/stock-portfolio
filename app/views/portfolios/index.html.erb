@@ -1,4 +1,6 @@
-<p style="color: green"><%= notice %></p>
+<% if notice %>
+  <div class="flash-message"><%= notice %></div>
+<% end %>
 
 <article>
   <div class="article-header">

@@ -1,4 +1,22 @@
-<div class="item">
-  <%= holding.symbol %><br>
-  <%= link_to "Destroy Holding", [holding.portfolio, holding], data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Name</th>
+      <th>Shares</th>
+      <th>Cost</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% portfolio.holdings.each do |holding| %>
+      <tr onclick="window.location='<%= portfolio_holding_path(portfolio, holding) %>';" style='cursor: pointer;'>
+        <td><%= holding.symbol %></td>
+        <td>(Name)</td>
+        <td>0</td>
+        <td>$0</td>
+        <td>$0</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -184,6 +184,18 @@ ul {
   width: 40%;
 }
 
+.flash-message {
+  background-color: white;
+  border-left: 0.5rem #004936 solid;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
+  font-weight: bold;
+  line-height: 1.5rem;
+  margin: 1rem auto;
+  padding: 1rem;
+  text-align: center;
+  width: fit-content;
+}
+
 .logo-container {
   align-items: center;
   display: flex;
