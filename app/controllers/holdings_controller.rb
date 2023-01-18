@@ -1,10 +1,16 @@
 class HoldingsController < ApplicationController
   def create
     @portfolio = Portfolio.find(params[:portfolio_id])
-    @holding = @portfolio.holdings.create(holding_params)
-    redirect_to portfolio_path(@portfolio)
+    @holding = @portfolio.holdings.new(holding_params)
+    respond_to do |format|
+      if @holding.save
+        format.html { redirect_to portfolio_path(@portfolio), notice: "Added holding to portfolio." }
+      else
+        format.html { render @portfolio, status: :unprocessable_entity }
+      end
+    end
   end
-
+  
   def destroy
     @portfolio = Portfolio.find(params[:portfolio_id])
     @holding = @portfolio.holdings.find(params[:id])

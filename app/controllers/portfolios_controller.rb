@@ -24,7 +24,8 @@ class PortfoliosController < ApplicationController
       if @portfolio.save
         format.html { redirect_to portfolio_url(@portfolio), notice: "Portfolio was successfully created." }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        @portfolios = Portfolio.all
+        format.html { render :index, status: :unprocessable_entity }
       end
     end
   end
