@@ -1,7 +1,20 @@
-<div id="<%= dom_id portfolio %>">
-  <p>
-    <strong>Name:</strong>
-    <%= portfolio.name %>
-  </p>
-
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Portfolio Name</th>
+      <th>Cost</th>
+      <th>Current Value</th>
+      <th>P/L</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% portfolios.each do |portfolio| %>
+      <tr onclick="window.location='<%= portfolio_path(portfolio) %>';" style='cursor: pointer;'>
+        <td><%= portfolio.name %></td>
+        <td>$0</td>
+        <td>$0</td>
+        <td>0%</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

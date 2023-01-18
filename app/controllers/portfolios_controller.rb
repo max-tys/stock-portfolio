@@ -9,6 +9,7 @@ class PortfoliosController < ApplicationController
 
   # GET /portfolios/1 or /portfolios/1.json
   def show
+    @holding = Holding.new
   end
   
   # GET /portfolios/1/edit

@@ -18,8 +18,8 @@
         <th>Symbol</th>
         <th>Name</th>
         <th>Shares</th>
-        <th>Total Cost</th>
-        <th>Current Value</th>
+        <th>Cost</th>
+        <th>Value</th>
       </tr>
     </thead>
     <tbody>
@@ -38,5 +38,10 @@
 
 <div class="form-container">
   <h2>Add a holding</h2>
-  <%= render 'holdings/form' %>
+  <%= form_with model: [@portfolio, @holding] do |form| %>
+    <%= field_set_tag do %>
+      <%= form.text_field :symbol, placeholder: "Holding symbol" %>
+      <%= form.submit "Create Holding" %>
+    <% end %>
+  <% end %>
 </div>

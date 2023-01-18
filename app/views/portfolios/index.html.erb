@@ -5,26 +5,7 @@
     <h2>Overview of Portfolios</h2>
   </div>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Portfolio Name</th>
-        <th>Cost</th>
-        <th>Current Value</th>
-        <th>P/L</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @portfolios.each_with_index do |portfolio, idx| %>
-        <tr onclick="window.location='<%= portfolio_path(portfolio) %>';" style='cursor: pointer;'>
-          <td><%= portfolio.name %></td>
-          <td>$0</td>
-          <td>$0</td>
-          <td>0%</td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <%= render "portfolio", portfolios: @portfolios %>
 </article>
 
 <div class="form-container">
