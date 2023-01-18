@@ -1,4 +1,9 @@
 class HoldingsController < ApplicationController
+  def show
+    @portfolio = Portfolio.find(params[:portfolio_id])
+    @holding = @portfolio.holdings.find(params[:id])
+  end
+
   def create
     @portfolio = Portfolio.find(params[:portfolio_id])
     @holding = @portfolio.holdings.new(holding_params)
@@ -17,11 +22,6 @@ class HoldingsController < ApplicationController
     symbol = @holding.symbol
     @holding.destroy
     redirect_to portfolio_path(@portfolio), status: :see_other, notice: "Deleted #{symbol} from portfolio."
-  end
-
-  def show
-    @portfolio = Portfolio.find(params[:portfolio_id])
-    @holding = @portfolio.holdings.find(params[:id])
   end
 
   private
