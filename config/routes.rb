@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "portfolios#index"
 
-  resources :portfolios do
-    resources :holdings
+  resources :portfolios, except: :new do
+    resources :holdings, except: :new
   end
 end

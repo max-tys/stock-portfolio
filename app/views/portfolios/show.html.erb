@@ -1,34 +1,42 @@
 <p style="color: green"><%= notice %></p>
 
-<h4>Portfolio: <%= @portfolio.name %></h4>
+<article>
+  <div class="article-header">
+    <div class="article-title">
+      <h4>Portfolio: <%= @portfolio.name %></h4>
+      <h2>List of Holdings</h2>
+    </div>
+    <div class="article-nav">
+      <%= button_to "Rename Portfolio", edit_portfolio_path(@portfolio), method: :get %>
+      <%= button_to "Delete Portfolio", @portfolio, method: :delete %>
+    </div>
+  </div>
 
-<h2>List of Holdings</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>Symbol</th>
-      <th>Name</th>
-      <th>Cost</th>
-      <th>Current Value</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @portfolio.holdings.each do |holding| %>
-      <tr onclick="window.location='<%= portfolio_holding_path(@portfolio, holding) %>';" style='cursor: pointer;'>
-        <td><%= holding.symbol %></td>
-        <td>(Name)</td>
-        <td>$0</td>
-        <td>$0</td>
+  <table>
+    <thead>
+      <tr>
+        <th>Symbol</th>
+        <th>Name</th>
+        <th>Shares</th>
+        <th>Total Cost</th>
+        <th>Current Value</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @portfolio.holdings.each do |holding| %>
+        <tr onclick="window.location='<%= portfolio_holding_path(@portfolio, holding) %>';" style='cursor: pointer;'>
+          <td><%= holding.symbol %></td>
+          <td>(Name)</td>
+          <td>0</td>
+          <td>$0</td>
+          <td>$0</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</article>
 
 <div class="form-container">
   <h2>Add a holding</h2>
   <%= render 'holdings/form' %>
 </div>
-
-<%= button_to "Edit this portfolio", edit_portfolio_path(@portfolio), method: :get %>
-<%= button_to "Destroy this portfolio", @portfolio, method: :delete %>

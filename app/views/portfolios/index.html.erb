@@ -2,16 +2,16 @@
 
 <article>
   <div class="article-header">
-    <h2>Portfolios Overview</h2>
-    <%= button_to "New Portfolio", new_portfolio_path, method: :get %>
+    <h2>Overview of Portfolios</h2>
   </div>
 
   <table>
     <thead>
       <tr>
         <th>Portfolio Name</th>
-        <th>Current Value</th>
         <th>Cost</th>
+        <th>Current Value</th>
+        <th>P/L</th>
       </tr>
     </thead>
     <tbody>
@@ -20,8 +20,19 @@
           <td><%= portfolio.name %></td>
           <td>$0</td>
           <td>$0</td>
+          <td>0%</td>
         </tr>
       <% end %>
     </tbody>
   </table>
 </article>
+
+<div class="form-container">
+  <h2>Add a portfolio</h2>
+  <%= form_with model: @portfolio do |form| %>
+    <%= field_set_tag do %>
+      <%= form.text_field :name, placeholder: "Portfolio Name" %>
+      <%= form.submit "Create Portfolio" %>
+    <% end %>
+  <% end %>
+</div>

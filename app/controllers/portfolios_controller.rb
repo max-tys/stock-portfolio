@@ -4,17 +4,13 @@ class PortfoliosController < ApplicationController
   # GET /portfolios or /portfolios.json
   def index
     @portfolios = Portfolio.all
+    @portfolio = Portfolio.new
   end
 
   # GET /portfolios/1 or /portfolios/1.json
   def show
   end
-
-  # GET /portfolios/new
-  def new
-    @portfolio = Portfolio.new
-  end
-
+  
   # GET /portfolios/1/edit
   def edit
   end
