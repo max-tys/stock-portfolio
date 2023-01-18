@@ -17,4 +17,13 @@
   <%= render "holdings/holding", portfolio: @portfolio %>
 </article>
 
-<%= render "holdings/form", portfolio: @portfolio, holding: @holding %>
+<div class="form-container">
+  <h2>Add Holding</h2>
+  <%# @portfolio for the action path, @holding for the model %>
+  <%= form_with(model: [@portfolio, @holding]) do |form| %>
+    <%= field_set_tag do %>
+      <%= form.text_field :symbol, placeholder: "Holding symbol" %>
+      <%= form.submit "Submit" %>
+    <% end %>
+  <% end %>
+</div>

@@ -1,13 +1,13 @@
 class PortfoliosController < ApplicationController
   before_action :set_portfolio, only: %i[ show edit update destroy ]
 
-  # GET /portfolios or /portfolios.json
+  # GET /portfolios
   def index
     @portfolios = Portfolio.all
     @portfolio = Portfolio.new
   end
 
-  # GET /portfolios/1 or /portfolios/1.json
+  # GET /portfolios/1
   def show
     @holding = Holding.new
   end
@@ -16,7 +16,7 @@ class PortfoliosController < ApplicationController
   def edit
   end
 
-  # POST /portfolios or /portfolios.json
+  # POST /portfolios
   def create
     @portfolio = Portfolio.new(portfolio_params)
 

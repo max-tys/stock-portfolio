@@ -70,7 +70,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 input[type=text] {
-  border: 1px solid #4D6B06;
+  border: 1px solid #00241B;
   border-radius: 5px;
   font-family: 'Nunito', sans-serif;
   font-size: 1rem;
@@ -81,7 +81,7 @@ input[type=text] {
 }
 
 input[type=text]:focus {
-  outline-color: #8D8F00;
+  outline-color: #a8aa1d;
 }
 
 main {
