@@ -6,6 +6,7 @@ class HoldingsController < ApplicationController
     @holding = Holding.find(params[:id])
     # https://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html
     @portfolio = @holding.portfolio
+    @transaction = Transaction.new
   end
 
   # POST /portfolios/45/holdings
