@@ -16,9 +16,4 @@ This is a Ruby on Rails app that uses PostgreSQL as its database.
     * Start the PostgreSQL server: `sudo service postgresql start`.
     * Create the PostgreSQL databases: `rails db:create`.
     * Migrate the PostgreSQL databases: `rails db:migrate`.
-3. Start the Rails server which listens on port 3000 by default: `rails s` or `rails server`. Open http://localhost:3000 in your browser, and you'll see the Rails app running.
-
-## Config Todo
-* How to run the test suite
-* Services (job queues, cache servers, search engines, etc.)
-* Deployment instructions
+3. Start the Rails server which listens on port 3000 by default: `rails s` or `rails server`. Open http://localhost:3000 in your browser and you'll see the Rails app running.
