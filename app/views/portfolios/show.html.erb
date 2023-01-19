@@ -16,30 +16,7 @@
     </div>
   </div>
 
-  <%# render "holdings/holding", portfolio: @portfolio %>
-  <table>
-    <thead>
-      <tr>
-        <th>Symbol</th>
-        <th>Name</th>
-        <th>Shares</th>
-        <th>Cost</th>
-        <th>Value</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @portfolio.holdings.each do |holding| %>
-        <%# Consider changing to holding_path %>
-        <tr onclick="window.location='/holdings/<%= holding.id %>';" style='cursor: pointer;'>
-          <td><%= holding.symbol %></td>
-          <td>(Name)</td>
-          <td>0</td>
-          <td>$0</td>
-          <td>$0</td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <%= render "holdings/holding", portfolio: @portfolio %>
 </article>
 
 <%# Form %>
@@ -59,7 +36,7 @@
     <% end %>
 
     <%= field_set_tag do %>
-      <%= form.text_field "holding[symbol]", placeholder: "Holding symbol" %>
+      <%= form.text_field "holding[symbol]", placeholder: "Stock ticker symbol" %>
       <%= form.submit "Submit" %>
     <% end %>
   <% end %>
