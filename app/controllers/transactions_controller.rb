@@ -19,6 +19,7 @@ class TransactionsController < ApplicationController
 
   # GET /transactions/1/edit, prefix: edit_transaction
   def edit
+    @holding = @transaction.holding
   end
 
   # PATCH/PUT /transactions/1
@@ -36,10 +37,11 @@ class TransactionsController < ApplicationController
 
   # DELETE /transactions/1, prefix: transaction
   def destroy
+    @holding = @transaction.holding
     @transaction.destroy
 
     respond_to do |format|
-      format.html { redirect_to transactions_url, notice: "Transaction was successfully destroyed." }
+      format.html { redirect_to @holding, notice: "Transaction was successfully deleted." }
     end
   end
 

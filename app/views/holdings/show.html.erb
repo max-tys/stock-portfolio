@@ -41,26 +41,4 @@
 </article>
 
 <%# Form %>
-<div class="form-container">
-  <h2>Add Transaction</h2>
-  <%= form_with url: holding_transactions_path(@holding) do |form| %>
-    <% if @transaction.errors.any? %>
-      <div style="color: red">
-        <h2><%= pluralize(@transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
-
-        <ul>
-          <% @transaction.errors.each do |error| %>
-            <li><%= error.full_message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <%= field_set_tag do %>
-      <%= form.hidden_field "transaction[holding_id]", value: @holding.id %>
-      <%= form.text_field "transaction[price]", placeholder: "Transacted price" %>
-      <%= form.text_field "transaction[quantity]", placeholder: "Quantity" %>
-      <%= form.submit "Submit" %>
-    <% end %>
-  <% end %>
-</div>
+<%= render "transactions/form", holding: @holding, transaction: @transaction, title: "Add Transaction", url: holding_transactions_path(@holding) %>

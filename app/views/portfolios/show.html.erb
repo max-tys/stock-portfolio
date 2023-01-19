@@ -1,3 +1,6 @@
+<%# Show a single portfolio and its associated holdings %>
+<%# Provides the option to add a holding on the same page %>
+
 <%# Flash message %>
 <% if notice %>
   <div class="flash-message"><%= notice %></div>
@@ -36,7 +39,7 @@
     <% end %>
 
     <%= field_set_tag do %>
-      <%= form.text_field "holding[symbol]", placeholder: "Stock ticker symbol" %>
+      <%= form.text_field "holding[symbol]", value: @holding.symbol, placeholder: "Stock ticker symbol" %>
       <%= form.submit "Submit" %>
     <% end %>
   <% end %>
