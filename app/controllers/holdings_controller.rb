@@ -3,7 +3,6 @@ require 'pry'
 class HoldingsController < ApplicationController
   # GET /holdings/39
   def show
-    # https://api.rubyonrails.org/classes/ActiveRecord/FinderMethods.html#method-i-find
     @holding = Holding.find(params[:id])
     # https://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html
     @portfolio = @holding.portfolio
@@ -13,6 +12,8 @@ class HoldingsController < ApplicationController
   def create
     @portfolio = Portfolio.find(params[:portfolio_id])
     # https://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html#method-i-has_many
+    # Return value: a new child object that hasn't been saved.
+    # Side effect: child object is linked to the collection until the collection is modified.
     @holding = @portfolio.holdings.build(holding_params)
 
     # https://api.rubyonrails.org/classes/ActionController/MimeResponds.html#method-i-respond_to
