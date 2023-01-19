@@ -21,6 +21,10 @@ a {
   text-decoration: none;
 }
 
+a:visited {
+  color: black;
+}
+
 article {
   background-color: white;
   border: none;

@@ -3,13 +3,16 @@ class TransactionsController < ApplicationController
 
   # POST /holdings/1/transactions, prefix: holding_transactions
   def create
+    @holding = Holding.find(params[:holding_id])
     @transaction = Transaction.new(transaction_params)
 
     respond_to do |format|
       if @transaction.save
-        format.html { redirect_to transaction_url(@transaction), notice: "Transaction was successfully created." }
+        format.html { redirect_to holding_path(@holding), notice: "Transaction was successfully created." }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        @holding = Holding.find(params[:holding_id])
+        @portfolio = @holding.portfolio
+        format.html { render "holdings/show", status: :unprocessable_entity }
       end
     end
   end
@@ -48,6 +51,6 @@ class TransactionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def transaction_params
-      params.require(:transaction).permit(:price, :quantity)
+      params.require(:transaction).permit(:price, :quantity, :holding_id)
     end
 end
