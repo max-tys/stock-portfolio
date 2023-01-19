@@ -3,6 +3,7 @@ class PortfoliosController < ApplicationController
 
   # GET /portfolios
   def index
+    # https://api.rubyonrails.org/classes/ActiveRecord/Scoping/Named/ClassMethods.html#method-i-all
     @portfolios = Portfolio.all
     @portfolio = Portfolio.new
   end
@@ -30,7 +31,7 @@ class PortfoliosController < ApplicationController
     end
   end
 
-  # PATCH/PUT /portfolios/1 or /portfolios/1.json
+  # PATCH/PUT /portfolios/1
   def update
     respond_to do |format|
       if @portfolio.update(portfolio_params)

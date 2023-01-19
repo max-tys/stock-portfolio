@@ -1,7 +1,9 @@
+<%# Flash message %>
 <% if notice %>
   <div class="flash-message"><%= notice %></div>
 <% end %>
 
+<%# Table of holdings %>
 <article>
   <div class="article-header">
     <div class="article-title">
@@ -40,13 +42,24 @@
   </table>
 </article>
 
+<%# Form %>
 <div class="form-container">
   <h2>Add Holding</h2>
-  <%# @portfolio for the action path, @holding for the model %>
-  <%# Todo Make the form work. %>
-  <%= form_with do |form| %>
+  <%= form_with url: portfolio_holdings_path(@portfolio) do |form| %>
+    <% if @holding.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(@holding.errors.count, "error") %> prohibited this portfolio from being saved:</h2>
+
+        <ul>
+          <% @holding.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
     <%= field_set_tag do %>
-      <%= form.text_field :symbol, placeholder: "Holding symbol" %>
+      <%= form.text_field "holding[symbol]", placeholder: "Holding symbol" %>
       <%= form.submit "Submit" %>
     <% end %>
   <% end %>

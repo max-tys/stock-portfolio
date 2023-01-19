@@ -1,19 +1,29 @@
+require 'pry'
+
 class HoldingsController < ApplicationController
   # GET /holdings/39
   def show
+    # https://api.rubyonrails.org/classes/ActiveRecord/FinderMethods.html#method-i-find
     @holding = Holding.find(params[:id])
+    # https://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html
     @portfolio = @holding.portfolio
   end
 
   # POST /portfolios/45/holdings
   def create
     @portfolio = Portfolio.find(params[:portfolio_id])
-    @new_holding = @portfolio.holdings.new(holding_params)
+    # https://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html#method-i-has_many
+    @holding = @portfolio.holdings.build(holding_params)
 
+    # https://api.rubyonrails.org/classes/ActionController/MimeResponds.html#method-i-respond_to
     respond_to do |format|
-      if @new_holding.save
-        format.html { redirect_to portfolio_path(@portfolio), notice: "Added #{@new_holding.symbol} to portfolio." }
+      # https://guides.rubyonrails.org/active_record_validations.html#when-does-validation-happen-questionmark
+      if @holding.save
+        format.html { redirect_to portfolio_path(@portfolio), notice: "Added #{@holding.symbol} to portfolio." }
       else
+        # Reassign @portfolio because @portfolio.holdings.build adds an entry to the @portfolio.holdings object, even if @holding isn't saved to the database.
+        @portfolio = Portfolio.find(params[:portfolio_id])
+        # https://api.rubyonrails.org/classes/ActionView/Template.html#method-i-render
         format.html { render "portfolios/show", status: :unprocessable_entity }
       end
     end
