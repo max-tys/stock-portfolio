@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :portfolios, except: :new do
     resources :holdings, only: [:show, :create, :destroy], shallow: true do
-      resources :transactions, except: [:new, :index], shallow: true
+      resources :transactions, except: [:new, :index, :show], shallow: true
     end
   end
 end
