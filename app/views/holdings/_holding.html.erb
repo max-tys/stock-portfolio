@@ -2,18 +2,16 @@
   <thead>
     <tr>
       <th>Symbol</th>
-      <th>Name</th>
       <th>Shares</th>
-      <th>Cost</th>
-      <th>Value</th>
+      <th>Last Price</th>
+      <th>Total</th>
     </tr>
   </thead>
   <tbody>
     <% portfolio.holdings.each do |holding| %>
       <tr onclick="window.location='<%= holding_path(holding) %>';" style='cursor: pointer;'>
         <td><%= holding.symbol %></td>
-        <td>(Name)</td>
-        <td>0</td>
+        <td><%= holding.transactions.pluck(:quantity).sum %></td>
         <td>$0</td>
         <td>$0</td>
       </tr>

@@ -1,5 +1,5 @@
 class PortfoliosController < ApplicationController
-  before_action :set_portfolio, only: %i[ show edit update destroy ]
+  before_action :set_portfolio, only: %i[ edit update destroy ]
 
   # GET /portfolios
   def index
@@ -11,6 +11,9 @@ class PortfoliosController < ApplicationController
   # GET /portfolios/1
   def show
     @holding = Holding.new
+    # https://guides.rubyonrails.org/active_record_querying.html#nested-associations-hash
+    # Finds a single portfolio and eager load all the associated holdings for it, as well as the transactions for all of the holdings. Prevents a nested N+1 problem.
+    @portfolio = Portfolio.includes(holdings: :transactions).find(params[:id])
   end
   
   # GET /portfolios/1/edit

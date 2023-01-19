@@ -26,13 +26,14 @@
       </tr>
     </thead>
     <tbody>
+      <%# Selects all associated transactions at the outset, avoids N+1 queries %>
       <% @holding.transactions.each do |transaction| %>
       <tr onclick="window.location='<%= edit_transaction_path(transaction) %>';" style='cursor: pointer;'>
-        <td><%= transaction.created_at.to_date %></td>
-        <td><%= transaction.quantity %></td>
-        <td><%= transaction.price %></td>
-        <td>$0</td>
-        <td><%= transaction.quantity * transaction.price %></td>
+        <td><%= transaction.created_at.to_date %> </td>
+        <td><%= sprintf('%.2f', transaction.quantity) %></td>
+        <td><%= sprintf('%.2f', transaction.price) %></td>
+        <td>$<%= sprintf('%.2f', 0) %></td>
+        <td>$<%= sprintf('%.2f', transaction.quantity * transaction.price) %></td>
       </tr>
     <% end %>
     </tbody>
