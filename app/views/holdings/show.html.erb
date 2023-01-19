@@ -27,7 +27,7 @@
     </thead>
     <tbody>
       <% @holding.transactions.each do |transaction| %>
-      <tr onclick="window.location='<%= transaction_path(transaction) %>';" style='cursor: pointer;'>
+      <tr onclick="window.location='<%= edit_transaction_path(transaction) %>';" style='cursor: pointer;'>
         <td><%= transaction.created_at.to_date %></td>
         <td><%= transaction.quantity %></td>
         <td><%= transaction.price %></td>
