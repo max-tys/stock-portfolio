@@ -1,7 +1,8 @@
 <%# Form to Create or Update Transaction %>
 <div class="form-container">
   <h2><%= title %></h2>
-  <%= form_with(url: url) do |form| %>
+  
+  <%= form_with(model: model) do |form| %>
     <% if transaction.errors.any? %>
       <div style="color: red">
         <h2><%= pluralize(transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
@@ -15,9 +16,9 @@
     <% end %>
 
     <%= field_set_tag do %>
-      <%= form.hidden_field "transaction[holding_id]", value: holding.id %>
-      <%= form.text_field "transaction[price]", value: transaction.price, placeholder: "Transacted price" %>
-      <%= form.text_field "transaction[quantity]", value: transaction.quantity, placeholder: "Quantity" %>
+      <%= form.hidden_field :holding_id, value: holding.id %>
+      <%= form.text_field :price, value: transaction.price, placeholder: "Transacted price" %>
+      <%= form.text_field :quantity, value: transaction.quantity, placeholder: "Quantity" %>
       <%= form.submit "Submit" %>
     <% end %>
   <% end %>

@@ -24,13 +24,13 @@ class TransactionsController < ApplicationController
 
   # PATCH/PUT /transactions/1
   def update
+    @holding = @transaction.holding
+    
     respond_to do |format|
       if @transaction.update(transaction_params)
-        format.html { redirect_to transaction_url(@transaction), notice: "Transaction was successfully updated." }
-        format.json { render :show, status: :ok, location: @transaction }
+        format.html { redirect_to holding_path(@holding), notice: "Transaction was successfully updated." }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @transaction.errors, status: :unprocessable_entity }
       end
     end
   end

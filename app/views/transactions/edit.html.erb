@@ -1,4 +1,4 @@
-<%= render "transactions/form", holding: @holding, transaction: @transaction, title: "Editing Transaction", url: transaction_path(@transaction) %>
+<%= render "transactions/form", holding: @holding, transaction: @transaction, title: "Editing Transaction", model: @transaction %>
 
 <%= button_to "Delete Transaction", @transaction, method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this transaction?" } %>
 

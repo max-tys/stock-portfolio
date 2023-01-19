@@ -1,3 +1,6 @@
+<%# Show a single holding and all its associated transactions %>
+<%# You can add a transaction on the same page %>
+
 <%# Flash message %>
 <% if notice %>
   <div class="flash-message"><%= notice %></div>
@@ -41,4 +44,4 @@
 </article>
 
 <%# Form %>
-<%= render "transactions/form", holding: @holding, transaction: @transaction, title: "Add Transaction", url: holding_transactions_path(@holding) %>
+<%= render "transactions/form", holding: @holding, transaction: @transaction, title: "Add Transaction", model: [@holding, @transaction] %>
