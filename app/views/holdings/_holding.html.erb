@@ -11,9 +11,9 @@
     <% portfolio.holdings.each do |holding| %>
       <tr onclick="window.location='<%= holding_path(holding) %>';" style='cursor: pointer;'>
         <td><%= holding.symbol %></td>
-        <td><%= holding.transactions.pluck(:quantity).sum %></td>
-        <td>$0</td>
-        <td>$0</td>
+        <td><%= sprintf('%.2f', holding.transactions.pluck(:quantity).sum) %></td>
+        <td>$<%= sprintf('%.2f', 0) %></td>
+        <td>$<%= sprintf('%.2f', 0) %></td>
       </tr>
     <% end %>
   </tbody>
