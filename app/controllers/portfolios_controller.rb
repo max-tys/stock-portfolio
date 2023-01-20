@@ -1,7 +1,7 @@
 class PortfoliosController < ApplicationController
   before_action :set_portfolio, only: %i[ edit update destroy ]
 
-  # GET /portfolios
+  # GET /portfolios (portfolios)
   def index
     # https://guides.rubyonrails.org/active_record_querying.html#calculations
     @portfolios = Portfolio.select([:id, :name, "SUM(price * quantity) AS invested"])
@@ -11,11 +11,12 @@ class PortfoliosController < ApplicationController
     @portfolio = Portfolio.new
   end
 
+  # GET /portfolios/new (new_portfolio)
   def new
     @portfolio = Portfolio.new
   end
 
-  # GET /portfolios/1
+  # GET /portfolios/1 (portfolio)
   def show
     @holding = Holding.new
     # https://guides.rubyonrails.org/active_record_querying.html#nested-associations-hash
@@ -23,11 +24,11 @@ class PortfoliosController < ApplicationController
     @portfolio = Portfolio.includes(holdings: :transactions).find(params[:id])
   end
   
-  # GET /portfolios/1/edit
+  # GET /portfolios/1/edit (edit_portfolio)
   def edit
   end
 
-  # POST /portfolios
+  # POST /portfolios (portfolios)
   def create
     @portfolio = Portfolio.new(portfolio_params)
 
@@ -41,7 +42,7 @@ class PortfoliosController < ApplicationController
     end
   end
 
-  # PATCH/PUT /portfolios/1
+  # PATCH/PUT /portfolios/1 (portfolio)
   def update
     respond_to do |format|
       if @portfolio.update(portfolio_params)
@@ -52,7 +53,7 @@ class PortfoliosController < ApplicationController
     end
   end
 
-  # DELETE /portfolios/1 or /portfolios/1.json
+  # DELETE /portfolios/1 (portfolio)
   def destroy
     @portfolio.destroy
 
@@ -62,7 +63,6 @@ class PortfoliosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_portfolio
       @portfolio = Portfolio.find(params[:id])
     end
