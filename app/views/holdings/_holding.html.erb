@@ -6,29 +6,27 @@
     <tr>
       <th>Symbol</th>
       <th>Quantity</th>
+      <th>Average Cost</th>
       <th>Last Price</th>
-      <th>Weighted Average Cost</th>
       <th>Current Value</th>
-      <th>P/L</th>
     </tr>
   </thead>
   <tbody>
-    <% portfolio.holdings.each do |holding| %>
+    <% portfolio.holdings.order(:symbol).each do |holding| %>
       <tr onclick="window.location='<%= holding_path(holding) %>';" style='cursor: pointer;'>
         <td><%= holding.symbol %></td>
-        <td><%= sprintf('%.2f', holding.transactions.pluck(:quantity).sum) %></td>
+        <td><%= sprintf('%.2f', quantity = holding.transactions.pluck(:quantity).sum) %></td>
+        <td>$ <%= sprintf('%.2f', 0) %></td>
         <td>
           $ <%= 
           begin
-            sprintf('%.2f', finnhub_client.quote("#{holding.symbol}").c)
+            sprintf('%.2f', last_price = finnhub_client.quote("#{holding.symbol}").c)
           rescue FinnhubRuby::ApiError
-            sprintf('%.2f', 0)
+            '-'
           end
           %>
         </td>
-        <td>$ <%= sprintf('%.2f', 0) %></td>
-        <td>$ <%= sprintf('%.2f', 0) %></td>
-        <td>$ <%= sprintf('%.2f', 0) %></td>
+        <td>$ <%= sprintf('%.2f', quantity * last_price) %></td>
       </tr>
     <% end %>
   </tbody>
