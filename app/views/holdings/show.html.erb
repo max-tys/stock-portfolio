@@ -6,18 +6,23 @@
   <div class="flash-message"><%= notice %></div>
 <% end %>
 
-<%# Table of transactions %>
+<%# Main section %>
 <article>
+  <%# Heading %>
   <div class="article-header">
     <div class="article-title">
-      <h4><%= link_to "Portfolio: #{@portfolio.name}", @portfolio %></h4>
-      <h4>Holding: <%= @holding.symbol %></h4>
+      <h4 class="breadcrumb">
+        <%= link_to "Home", portfolios_path %><span class="caret-right"></span>
+        <%= link_to "#{@portfolio.name}", @portfolio %><span class="caret-right"></span>
+        <%= link_to "#{@holding.symbol}", @holding %>
+      </h4>
       <h2>List of Transactions</h2>
     </div>
    
     <%= button_to "Delete", holding_path(@holding), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this holding and all its transactions?" } %>
   </div>
 
+  <%# Table of transactions %>
   <table>
     <thead>
       <tr>
