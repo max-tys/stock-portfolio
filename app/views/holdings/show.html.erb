@@ -52,10 +52,18 @@
       <%# Selects all associated transactions at the outset, avoids N+1 queries %>
       <% @holding.transactions.order(:created_at).each do |transaction| %>
       <tr onclick="window.location='<%= edit_transaction_path(transaction) %>';" style='cursor: pointer;'>
-        <td><%= transaction.created_at.to_date %> </td>
-        <td><%= sprintf('%.2f', transaction.quantity) %></td>
-        <td>$ <%= sprintf('%.2f', transaction.price) %></td>
-        <td>$ <%= sprintf('%.2f', transaction.quantity * transaction.price) %></td>
+        <td>
+          <%= transaction.created_at.to_date %>
+        </td>
+        <td>
+          <%= number_with_precision(transaction.quantity, :precision => 2, :delimiter => ',') %>
+        </td>
+        <td>
+          $ <%= number_with_precision(transaction.price, :precision => 2, :delimiter => ',') %>
+        </td>
+        <td>
+          $ <%= number_with_precision(transaction.quantity * transaction.price, :precision => 2, :delimiter => ',') %>
+        </td>
       </tr>
     <% end %>
     </tbody>
