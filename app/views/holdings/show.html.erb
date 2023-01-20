@@ -34,9 +34,9 @@
       <tr onclick="window.location='<%= edit_transaction_path(transaction) %>';" style='cursor: pointer;'>
         <td><%= transaction.created_at.to_date %> </td>
         <td><%= sprintf('%.2f', transaction.quantity) %></td>
-        <td><%= sprintf('%.2f', transaction.price) %></td>
-        <td>$<%= sprintf('%.2f', 0) %></td>
-        <td>$<%= sprintf('%.2f', transaction.quantity * transaction.price) %></td>
+        <td>$ <%= sprintf('%.2f', transaction.price) %></td>
+        <td>$ <%= sprintf('%.2f', 0) %></td>
+        <td>$ <%= sprintf('%.2f', transaction.quantity * transaction.price) %></td>
       </tr>
     <% end %>
     </tbody>
