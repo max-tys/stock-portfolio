@@ -37,13 +37,16 @@ article {
 
 button, 
 input[type=submit] {
+  align-items: center;
   background-color: #00241B;
   border: none;
   border-radius: 2rem;
   box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
   color: white;
   cursor: pointer;
+  display: flex;
   font-size: 1rem;
+  gap: 0.8rem;
   padding: 1rem 1.5rem;
   transition: 0.2s all;
   width: fit-content;
@@ -221,6 +224,10 @@ tbody tr:hover {
   padding: 1rem;
   text-align: center;
   width: fit-content;
+}
+
+.icon {
+  height: 1rem;
 }
 
 .logo-container {

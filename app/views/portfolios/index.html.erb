@@ -9,7 +9,12 @@
       <h2>All Portfolios</h2>
     </div>
     <div class="article-nav">
-      <%= link_to "Add", new_portfolio_path(@portfolio) %>
+      <form action="<%= new_portfolio_path(@portfolio) %>" method="get">
+        <button>
+          <%= image_tag "add.png", class:"icon" %>
+          Add
+        </button>
+      </form>
     </div>
   </div>
 
