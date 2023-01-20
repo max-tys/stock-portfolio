@@ -32,7 +32,7 @@ article {
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
   margin: 2rem auto;
   padding: 4rem 10%;
-  width: 80%;
+  width: 90%;
 }
 
 fieldset {
@@ -278,8 +278,9 @@ li {
   letter-spacing: 1px;
 }
 
-@media screen and (min-width: 1400px) {
+/* Shrink article size for wider screens */
+@media screen and (min-width: 1200px) {
   article {
-    width: 100%;
+    width: 80%;
   }
 }
