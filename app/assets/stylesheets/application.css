@@ -92,6 +92,9 @@ input[type=text]:focus {
 }
 
 main {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   text-align: center;
 }
 
@@ -193,6 +196,15 @@ tbody tr:hover {
 .breadcrumb a:hover {
   text-decoration: underline;
   text-underline-offset: 0.25rem;
+}
+
+.btn-delete {
+  background-color: rgb(114, 14, 14);
+}
+
+.btn-delete:hover, 
+.btn-delete:focus {
+  background-color: rgb(151, 29, 29);
 }
 
 .btn-icon {

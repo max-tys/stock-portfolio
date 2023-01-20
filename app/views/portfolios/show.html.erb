@@ -24,8 +24,12 @@
           Add Holding
         </button>
       </form>
-      <%= button_to "Rename Portfolio", edit_portfolio_path(@portfolio), method: :get %>
-      <%= button_to "Delete Portfolio", @portfolio, method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this portfolio and all its holdings?" } %>
+      <form action="<%= edit_portfolio_path(@portfolio) %>" method="get">
+        <button>
+          <%= image_tag "edit.png", class: "btn-icon" %>
+          Edit Portfolio
+        </button>
+      </form>
     </div>
   </div>
 
