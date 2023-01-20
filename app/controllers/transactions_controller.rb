@@ -1,6 +1,11 @@
 class TransactionsController < ApplicationController
   before_action :set_transaction, only: %i[ edit update destroy ]
 
+  def new
+    @holding = Holding.find(params[:holding_id])
+    @transaction = Transaction.new
+  end
+
   # POST /holdings/1/transactions, prefix: holding_transactions
   def create
     @holding = Holding.find(params[:holding_id])
@@ -12,7 +17,7 @@ class TransactionsController < ApplicationController
       else
         @holding = Holding.find(params[:holding_id])
         @portfolio = @holding.portfolio
-        format.html { render "holdings/show", status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_entity }
       end
     end
   end

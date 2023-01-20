@@ -19,7 +19,10 @@
       <%= form.hidden_field :holding_id, value: holding.id %>
       <%= form.text_field :price, value: transaction.price, placeholder: "Transacted price" %>
       <%= form.text_field :quantity, value: transaction.quantity, placeholder: "Quantity" %>
-      <%= form.submit "Submit" %>
+      <div class="form-buttons">
+        <%= link_to "Cancel", :back, class: "button btn-cancel" %>
+        <%= form.button "Submit", class: "button" %>
+      </div>
     <% end %>
   <% end %>
 </div>
