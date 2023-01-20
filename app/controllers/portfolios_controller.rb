@@ -4,7 +4,7 @@ class PortfoliosController < ApplicationController
   # GET /portfolios (portfolios)
   def index
     # https://guides.rubyonrails.org/active_record_querying.html#calculations
-    @portfolios = Portfolio.select([:id, :name, "SUM(price * quantity) AS invested"])
+    @portfolios = Portfolio.select(:id, :name, "SUM(price * quantity) AS invested")
       .left_outer_joins(holdings: :transactions)
       .group(:id)
   end
@@ -18,6 +18,7 @@ class PortfoliosController < ApplicationController
   def show
     # https://guides.rubyonrails.org/active_record_querying.html#nested-associations-hash
     # Finds a single portfolio and eager load all the associated holdings for it, as well as the transactions for all of the holdings. Prevents a nested N+1 problem.
+    # TODO Update SQL query
     @portfolio = Portfolio.includes(holdings: :transactions).find(params[:id])
   end
   
