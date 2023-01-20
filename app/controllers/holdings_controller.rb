@@ -1,5 +1,3 @@
-require 'pry'
-
 class HoldingsController < ApplicationController
   # GET /holdings/39
   def show
@@ -7,6 +5,10 @@ class HoldingsController < ApplicationController
     # https://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html
     @portfolio = @holding.portfolio
     @transaction = Transaction.new
+  end
+
+  def new
+
   end
 
   # POST /portfolios/45/holdings
