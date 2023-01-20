@@ -11,7 +11,10 @@
   <%# Header links %>
   <div class="article-header">
     <div class="article-title">
-      <h4><%= link_to "Home", portfolios_path %> > <%= link_to "Portfolio: #{@portfolio.name}", portfolio_path(@portfolio) %></h4>
+      <h4 class="breadcrumb">
+        <%= link_to "Home", portfolios_path %><span class="caret-right"></span>
+        <%= link_to "#{@portfolio.name}", @portfolio %>
+      </h4>
       <h2>List of Holdings</h2>
     </div>
     <div class="article-nav">
