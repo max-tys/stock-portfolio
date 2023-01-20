@@ -1,6 +1,5 @@
 <% if portfolio.holdings.empty? %>
   <p>This portfolio is currently empty.</p>
-  <p>Track a new holding below!</p>
 <% else %>
 <table>
   <thead>
@@ -18,7 +17,15 @@
       <tr onclick="window.location='<%= holding_path(holding) %>';" style='cursor: pointer;'>
         <td><%= holding.symbol %></td>
         <td><%= sprintf('%.2f', holding.transactions.pluck(:quantity).sum) %></td>
-        <td>$ <%= sprintf('%.2f', 0) %></td>
+        <td>
+          $ <%= 
+          begin
+            sprintf('%.2f', finnhub_client.quote("#{holding.symbol}").c)
+          rescue FinnhubRuby::ApiError
+            sprintf('%.2f', 0)
+          end
+          %>
+        </td>
         <td>$ <%= sprintf('%.2f', 0) %></td>
         <td>$ <%= sprintf('%.2f', 0) %></td>
         <td>$ <%= sprintf('%.2f', 0) %></td>

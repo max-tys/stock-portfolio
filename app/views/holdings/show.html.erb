@@ -36,14 +36,16 @@
   </div>
 
   <%# Table of transactions %>
+  <% if @holding.transactions.empty? %>
+    <p>There are currently no transactions for this holding.</p>
+  <% else %>
   <table>
     <thead>
       <tr>
         <th>Date</th>
-        <th>Shares</th>
-        <th>Cost</th>
-        <th>Value</th>
-        <th>Total</th>
+        <th>Quantity</th>
+        <th>Unit Cost</th>
+        <th>Amount Invested</th>
       </tr>
     </thead>
     <tbody>
@@ -53,10 +55,10 @@
         <td><%= transaction.created_at.to_date %> </td>
         <td><%= sprintf('%.2f', transaction.quantity) %></td>
         <td>$ <%= sprintf('%.2f', transaction.price) %></td>
-        <td>$ <%= sprintf('%.2f', 0) %></td>
         <td>$ <%= sprintf('%.2f', transaction.quantity * transaction.price) %></td>
       </tr>
     <% end %>
     </tbody>
   </table>
+  <% end %>
 </article>
