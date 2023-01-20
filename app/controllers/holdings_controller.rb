@@ -1,14 +1,17 @@
 class HoldingsController < ApplicationController
+  before_action :set_holding, only: %i[ show destroy ]
+
   # GET /holdings/39
   def show
-    @holding = Holding.find(params[:id])
     # https://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html
     @portfolio = @holding.portfolio
     @transaction = Transaction.new
   end
 
+  # GET /portfolios/1/holdings/new (new_portfolio_holding)
   def new
-
+    @portfolio = Portfolio.find(params[:portfolio_id])
+    @holding = Holding.new
   end
 
   # POST /portfolios/45/holdings
@@ -28,14 +31,13 @@ class HoldingsController < ApplicationController
         # Reassign @portfolio because @portfolio.holdings.build adds an entry to the @portfolio.holdings object, even if @holding isn't saved to the database.
         @portfolio = Portfolio.find(params[:portfolio_id])
         # https://api.rubyonrails.org/classes/ActionView/Template.html#method-i-render
-        format.html { render "portfolios/show", status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_entity }
       end
     end
   end
 
   # DELETE /holdings/39
   def destroy
-    @holding = Holding.find(params[:id])
     @portfolio = @holding.portfolio
     symbol = @holding.symbol
     @holding.destroy
@@ -43,6 +45,10 @@ class HoldingsController < ApplicationController
   end
 
   private
+
+  def set_holding
+    @holding = Holding.find(params[:id])
+  end
 
   # Only allow a list of trusted parameters through.
   def holding_params
