@@ -11,6 +11,10 @@ class PortfoliosController < ApplicationController
     @portfolio = Portfolio.new
   end
 
+  def new
+    @portfolio = Portfolio.new
+  end
+
   # GET /portfolios/1
   def show
     @holding = Holding.new
@@ -53,7 +57,7 @@ class PortfoliosController < ApplicationController
     @portfolio.destroy
 
     respond_to do |format|
-      format.html { redirect_to portfolios_url, notice: "Portfolio was successfully destroyed." }
+      format.html { redirect_to portfolios_url, notice: "Portfolio was successfully deleted." }
     end
   end
 
