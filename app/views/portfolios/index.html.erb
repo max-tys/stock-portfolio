@@ -4,8 +4,9 @@
 
 <article>
   <div class="article-header">
-    <h2>Overview of Portfolios</h2>
+    <h2>All Portfolios</h2>
   </div>
+  <% button_to "Add", new_portfolio_path(@portfolio) %>
 
   <%= render "portfolio", portfolios: @portfolios %>
 </article>
