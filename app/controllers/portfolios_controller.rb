@@ -4,7 +4,18 @@ class PortfoliosController < ApplicationController
   # GET /portfolios
   def index
     # https://api.rubyonrails.org/classes/ActiveRecord/Scoping/Named/ClassMethods.html#method-i-all
-    @portfolios = Portfolio.all
+    @portfolios = Portfolio.select(
+      [
+        :name, NamedFunction.new(
+          'SUM', [Transaction[:price] * Transaction[:quantity]]
+        )
+      ]
+    ).joins(
+      Portfolio.arel_table.join(Holding.arel_table).on(Holding[:portfolio_id].eq(Portfolio[:id])).join_sources
+    ).joins(
+      Portfolio.arel_table.join(Transaction.arel_table).on(Transaction[:holding_id].eq(Holding[:id])).join_sources
+    ).group(Portfolio[:id])
+    
     @portfolio = Portfolio.new
   end
 
