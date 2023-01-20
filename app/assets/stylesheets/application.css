@@ -35,7 +35,7 @@ article {
   width: 80%;
 }
 
-button, 
+button,
 input[type=submit] {
   align-items: center;
   background-color: #00241B;
@@ -48,8 +48,7 @@ input[type=submit] {
   font-size: 1rem;
   gap: 0.8rem;
   padding: 1rem 1.5rem;
-  transition: 0.2s all;
-  width: fit-content;
+  transition: 0.5s all;
 }
 
 button:hover, 
@@ -196,6 +195,10 @@ tbody tr:hover {
   text-underline-offset: 0.25rem;
 }
 
+.btn-icon {
+  height: 1rem;
+}
+
 .caret-right::before {
   content: " > ";
   padding: 0 0.25rem;
@@ -224,10 +227,6 @@ tbody tr:hover {
   padding: 1rem;
   text-align: center;
   width: fit-content;
-}
-
-.icon {
-  height: 1rem;
 }
 
 .logo-container {
