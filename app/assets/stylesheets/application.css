@@ -114,6 +114,12 @@ li {
   padding: 0 1rem;
 }
 
+p {
+  text-align: left;
+  font-size: 1.2rem;
+  line-height: normal;
+}
+
 table {
   border-radius: 5px;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
