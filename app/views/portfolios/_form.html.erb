@@ -16,8 +16,13 @@
     <% end %>
 
     <%= field_set_tag do %>
+      <%# form.label :name, "Portfolio Name" %>
       <%= form.text_field :name, placeholder: "Portfolio Name" %>
-      <%= form.button "Submit" %>
+
+      <div class="form-buttons">
+        <%= link_to "Cancel", :back, class: "button btn-cancel" %>
+        <%= form.button "Submit", class: "button" %>
+      </div>
     <% end %>
   <% end %>
 </div>

@@ -18,7 +18,10 @@
 
     <%= field_set_tag do %>
       <%= form.text_field :symbol, value: @holding.symbol, placeholder: "Stock ticker symbol" %>
-      <%= form.submit "Submit" %>
+      <div class="form-buttons">
+        <%= link_to "Cancel", :back, class: "button btn-cancel" %>
+        <%= form.button "Submit", class: "button" %>
+      </div>
     <% end %>
   <% end %>
 </div>

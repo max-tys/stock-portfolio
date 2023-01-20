@@ -1,9 +1,7 @@
 <%= render "form", portfolio: @portfolio, title: "Renaming Portfolio" %>
 
-<%= button_to "Back to Portfolio", @portfolio, method: :get %>
-
 <form action="<%= portfolio_path(@portfolio) %>" method="delete">
-  <button class="btn-delete" data-turbo-method="delete" data-turbo-confirm="Are you sure you want to delete this portfolio and all its holdings?">
+  <button class="button btn-delete" data-turbo-method="delete" data-turbo-confirm="Are you sure you want to delete this portfolio and all its holdings?">
     <%= image_tag "delete.png", class: "btn-icon" %>
     Delete Portfolio
   </button>
