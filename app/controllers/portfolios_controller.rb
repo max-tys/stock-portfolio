@@ -21,13 +21,14 @@ class PortfoliosController < ApplicationController
 
   # GET /portfolios/1 (portfolio)
   def show
-    # https://guides.rubyonrails.org/active_record_querying.html#nested-associations-hash
+    # Portfolio#find returns a single Portfolio object. Able to serve as a model for helpers that generate paths.
     @portfolio = Portfolio.find(params[:id])
 
+    # Portfolio#order returns a Relation object, which is a collection of multiple Portfolio objects.
     @portfolio_holdings = Portfolio.select("
-        holdings.id, 
-        holdings.symbol, 
-        SUM(quantity) AS quantity, 
+        holdings.id,
+        holdings.symbol,
+        SUM(quantity) AS quantity,
         (SUM(price * quantity) / SUM(quantity)) AS wac
       ")
       .left_outer_joins(holdings: :transactions)
