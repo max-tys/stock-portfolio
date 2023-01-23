@@ -8,7 +8,7 @@ class PortfoliosController < ApplicationController
     # The Relation object looks like an array, but it is not.
     # Each item within the Relation object is an object of the Portfolio class.
     # You can append more query methods to the Relation object.
-    @portfolios = Portfolio.select(:id, :name, "SUM(price * quantity) AS invested")
+    @portfolios = Portfolio.select(:id, :name, "SUM(price * quantity) AS amount_invested")
       .left_outer_joins(holdings: :transactions)
       .group(:id)
   end

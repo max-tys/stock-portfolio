@@ -13,7 +13,7 @@
   </thead>
   <tbody>
     <% portfolio_holdings.each do |holding| %>
-      <% attributes = get_attributes(holding) %>
+      <% attributes = get_holding_attributes(holding) %>
       <tr onclick="window.location='<%= holding_path(holding) %>';" style='cursor: pointer;'>
         <td><%= attributes[:symbol] %></td>
         <td><%= attributes[:quantity] %></td>

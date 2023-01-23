@@ -13,11 +13,12 @@
   </thead>
   <tbody>
     <% portfolios.each do |portfolio| %>
+      <% attributes = get_portfolio_attributes(portfolio) %>
       <tr onclick="window.location='<%= portfolio_path(portfolio) %>';" style='cursor: pointer;'>
-        <td><%= portfolio.name %></td>
-        <td>$ <%= number_format(portfolio.invested) %></td>
-        <td>$ <%= number_format(0) %></td>
-        <td><%= number_format(0) %> %</td>
+        <td><%= attributes[:name] %></td>
+        <td><%= attributes[:amount_invested] %></td>
+        <td><%= attributes[:current_value] %></td>
+        <td><%= attributes[:delta] %></td>
       </tr>
     <% end %>
   </tbody>

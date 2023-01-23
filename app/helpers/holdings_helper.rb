@@ -1,5 +1,5 @@
 module HoldingsHelper
-  def get_attributes(holding)
+  def get_holding_attributes(holding)
     quantity = get_quantity(holding)
     last_price = get_last_price(holding)
     {
