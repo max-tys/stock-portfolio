@@ -3,14 +3,22 @@ class PortfoliosController < ApplicationController
 
   # GET /portfolios (portfolios)
   def index
-    # https://guides.rubyonrails.org/active_record_querying.html#calculations
-    # #select, #left_outer_joins, and #group all return a Portfolio::ActiveRecord_Relation collection object.
-    # The Relation object looks like an array, but it is not.
-    # Each item within the Relation object is an object of the Portfolio class.
-    # You can append more query methods to the Relation object.
-    @portfolios = Portfolio.select(:id, :name, "SUM(price * quantity) AS amount_invested")
+    # Update the market price for all holdings every time Portfolio#index is loaded.
+    Holding.all.each do |holding|
+      last_price = get_last_price(holding)
+      holding.update(last_price: last_price)
+    end
+
+    # Returns a Portfolio::ActiveRecord_Relation collection object.
+    @portfolios = Portfolio.select("
+        portfolios.id,
+        portfolios.name,
+        SUM(transactions.quantity * transactions.price) AS amount_invested,
+        SUM(transactions.quantity * holdings.last_price) AS current_value
+      ")
       .left_outer_joins(holdings: :transactions)
-      .group(:id)
+      .group("portfolios.id")
+      .order("portfolios.name")
   end
 
   # GET /portfolios/new (new_portfolio)
@@ -75,11 +83,12 @@ class PortfoliosController < ApplicationController
   end
 
   private
-    def set_portfolio
-      @portfolio = Portfolio.find(params[:id])
-    end
 
-    def portfolio_params
-      params.require(:portfolio).permit(:name)
-    end
+  def set_portfolio
+    @portfolio = Portfolio.find(params[:id])
+  end
+
+  def portfolio_params
+    params.require(:portfolio).permit(:name)
+  end
 end
