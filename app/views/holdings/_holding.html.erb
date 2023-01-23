@@ -13,23 +13,13 @@
   </thead>
   <tbody>
     <% portfolio_holdings.each do |holding| %>
+      <% attributes = get_attributes(holding) %>
       <tr onclick="window.location='<%= holding_path(holding) %>';" style='cursor: pointer;'>
-        <td>
-          <%= holding.symbol %>
-        </td>
-        <td>
-          <%= number_format(holding.quantity) %>
-        </td>
-        <td>
-          $ <%= number_format(holding.wac) %>
-        </td>
-        <td>
-          <% market_price = last_price(holding.symbol) %>
-          $ <%= number_format(market_price) %>
-        </td>
-        <td>
-          $ <%= current_value(holding.quantity, market_price) %>
-        </td>
+        <td><%= attributes[:symbol] %></td>
+        <td><%= attributes[:quantity] %></td>
+        <td><%= attributes[:average_cost] %></td>
+        <td><%= attributes[:last_price] %></td>
+        <td><%= attributes[:current_value] %></td>
       </tr>
     <% end %>
   </tbody>
