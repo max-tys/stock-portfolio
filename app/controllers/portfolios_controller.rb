@@ -4,6 +4,11 @@ class PortfoliosController < ApplicationController
   # GET /portfolios (portfolios)
   def index
     # https://guides.rubyonrails.org/active_record_querying.html#calculations
+    # #select, #left_outer_joins, and #group all return a Portfolio::ActiveRecord_Relation collection object.
+      # This object looks like an array, but it is not.
+      # You can append other query methods to the Relation object.
+      # Each 'row' in the Relation object is an object of the Portfolio class.
+    # The return value of the method chain is [#<Portfolio:0x00007fd6e739f920 id: 70, name: "USA">, #<Portfolio:0x00007fd6e739f808 id: 71, name: "ETF">]
     @portfolios = Portfolio.select(:id, :name, "SUM(price * quantity) AS invested")
       .left_outer_joins(holdings: :transactions)
       .group(:id)
@@ -17,9 +22,18 @@ class PortfoliosController < ApplicationController
   # GET /portfolios/1 (portfolio)
   def show
     # https://guides.rubyonrails.org/active_record_querying.html#nested-associations-hash
-    # Finds a single portfolio and eager load all the associated holdings for it, as well as the transactions for all of the holdings. Prevents a nested N+1 problem.
-    # TODO Update SQL query
-    @portfolio = Portfolio.includes(holdings: :transactions).find(params[:id])
+    @portfolio = Portfolio.find(params[:id])
+
+    @portfolio_holdings = Portfolio.select("
+        holdings.id, 
+        holdings.symbol, 
+        SUM(quantity) AS quantity, 
+        (SUM(price * quantity) / SUM(quantity)) AS wac
+      ")
+      .left_outer_joins(holdings: :transactions)
+      .where(["portfolio_id = ?", params[:id]])
+      .group("holdings.id")
+      .order("holdings.symbol")
   end
   
   # GET /portfolios/1/edit (edit_portfolio)

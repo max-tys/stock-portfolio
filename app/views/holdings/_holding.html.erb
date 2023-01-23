@@ -1,4 +1,4 @@
-<% if portfolio.holdings.empty? %>
+<% if portfolio_holdings.empty? %>
   <p>This portfolio is currently empty.</p>
 <% else %>
 <table>
@@ -12,14 +12,16 @@
     </tr>
   </thead>
   <tbody>
-    <% portfolio.holdings.order(:symbol).each do |holding| %>
+    <% portfolio_holdings.each do |holding| %>
       <tr onclick="window.location='<%= holding_path(holding) %>';" style='cursor: pointer;'>
-        <td><%= holding.symbol %></td>
         <td>
-          <%= number_with_precision(quantity = holding.transactions.pluck(:quantity).sum, :precision => 2, :delimiter => ',') %>
+          <%= holding.symbol %>
         </td>
         <td>
-          $ <%= number_with_precision(0, :precision => 2, :delimiter => ',') %>
+          <%= number_with_precision(holding.quantity, :precision => 2, :delimiter => ',') %>
+        </td>
+        <td>
+          $ <%= number_with_precision(holding.wac, :precision => 2, :delimiter => ',') %>
         </td>
         <td>
           $ <%= 
@@ -31,7 +33,7 @@
           %>
         </td>
         <td>
-          $ <%= number_with_precision(quantity * last_price, :precision => 2, :delimiter => ',') %>
+          $ <%= number_with_precision(holding.quantity * last_price, :precision => 2, :delimiter => ',') %>
         </td>
       </tr>
     <% end %>
