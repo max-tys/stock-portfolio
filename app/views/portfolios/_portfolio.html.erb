@@ -15,11 +15,9 @@
     <% portfolios.each do |portfolio| %>
       <tr onclick="window.location='<%= portfolio_path(portfolio) %>';" style='cursor: pointer;'>
         <td><%= portfolio.name %></td>
-        <td>
-          $ <%= number_with_precision(portfolio.invested, :precision => 2, :delimiter => ',') %>
-        </td>
-        <td>$ <%= sprintf('%.2f', 0) %></td>
-        <td><%= sprintf('%.2f', 0) %> %</td>
+        <td>$ <%= number_format(portfolio.invested) %></td>
+        <td>$ <%= number_format(0) %></td>
+        <td><%= number_format(0) %> %</td>
       </tr>
     <% end %>
   </tbody>

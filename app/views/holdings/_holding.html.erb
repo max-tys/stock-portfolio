@@ -18,22 +18,17 @@
           <%= holding.symbol %>
         </td>
         <td>
-          <%= number_with_precision(holding.quantity, :precision => 2, :delimiter => ',') %>
+          <%= number_format(holding.quantity) %>
         </td>
         <td>
-          $ <%= number_with_precision(holding.wac, :precision => 2, :delimiter => ',') %>
+          $ <%= number_format(holding.wac) %>
         </td>
         <td>
-          $ <%= 
-          begin
-            number_with_precision(last_price = finnhub_client.quote("#{holding.symbol}").c, :precision => 2, :delimiter => ',')
-          rescue FinnhubRuby::ApiError
-            '-'
-          end
-          %>
+          <% market_price = last_price(holding.symbol) %>
+          $ <%= number_format(market_price) %>
         </td>
         <td>
-          $ <%= number_with_precision(holding.quantity * last_price, :precision => 2, :delimiter => ',') %>
+          $ <%= current_value(holding.quantity, market_price) %>
         </td>
       </tr>
     <% end %>
