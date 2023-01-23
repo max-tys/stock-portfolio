@@ -89,8 +89,9 @@ table {
   border-radius: 5px;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
   margin: 1rem auto;
-  width: 100%;
   overflow: hidden;
+  table-layout: fixed;
+  width: 100%;
 }
 
 thead tr {
