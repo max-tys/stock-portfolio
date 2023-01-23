@@ -1,6 +1,6 @@
 <%# Form to add holding %>
 <div class="form-container">
-  <h2>Add Holding</h2>
+  <h2>Add Holding to <%= @portfolio.name %></h2>
   <%# Controller#Action: holdings#create %>
   <%# URI Pattern: POST /portfolios/:portfolio_id/holdings %>
   <%= form_with(model: [@portfolio, @holding]) do |form| %>
@@ -19,7 +19,7 @@
     <%= field_set_tag do %>
       <%= form.text_field :symbol, value: @holding.symbol, placeholder: "Stock ticker symbol" %>
       <div class="form-buttons">
-        <%= link_to "Cancel", :back, class: "button btn-cancel" %>
+        <%= link_to "Cancel", @portfolio, class: "button btn-cancel" %>
         <%= form.button "Submit", class: "button" %>
       </div>
     <% end %>
