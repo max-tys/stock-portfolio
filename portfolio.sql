@@ -1,10 +1,17 @@
 -- Query for portfolio#index (all portfolios)
-SELECT p.id, p.name, SUM(t.price * t.quantity) AS invested
+SELECT p.id, p.name, SUM(t.price * t.quantity) AS amount_invested
   FROM portfolios               AS p
   LEFT OUTER JOIN holdings      AS h ON h.portfolio_id = p.id
   LEFT OUTER JOIN transactions  AS t ON t.holding_id = h.id
  GROUP BY p.id;
 
+SELECT p.id, p.name, h.symbol, SUM(t.quantity) AS qty, SUM(t.price * t.quantity) AS amount_invested
+  FROM portfolios               AS p
+  LEFT OUTER JOIN holdings      AS h ON h.portfolio_id = p.id
+  LEFT OUTER JOIN transactions  AS t ON t.holding_id = h.id
+ GROUP BY p.id, h.symbol
+ ORDER BY p.id, h.symbol;
+ 
 -- Query for portfolio#show (single portfolio)
 
 SELECT h.id AS holding_id, 
