@@ -1,4 +1,4 @@
-# Handles requests pertaining to holdings within a portfolio.
+# Handles requests that pertain to holdings within a portfolio.
 class HoldingsController < ApplicationController
   before_action :set_holding, only: %i[show destroy]
 
