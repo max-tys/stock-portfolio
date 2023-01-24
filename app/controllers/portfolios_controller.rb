@@ -3,8 +3,9 @@ class PortfoliosController < ApplicationController
   before_action :set_portfolio, only: %i[edit update destroy]
 
   # GET /portfolios (portfolios)
+  # rubocop:disable Metrics/MethodLength
   def index
-    # Updates the last price for all holdings.
+    # Update last prices for all holdings
     Holding.all.each do |holding|
       last_price = get_last_price(holding)
       holding.update(last_price:)
@@ -27,7 +28,7 @@ class PortfoliosController < ApplicationController
     # Portfolio#find returns a single Portfolio object. This serves as a model for helpers that generate paths.
     @portfolio = set_portfolio
 
-    # Portfolio#order returns a Relation object, which is a collection of multiple Portfolio objects.
+    # Returns a Relation object, which is a collection of multiple Portfolio objects.
     @portfolio_holdings = Portfolio.select("
         holdings.id,
         holdings.symbol,
@@ -35,10 +36,11 @@ class PortfoliosController < ApplicationController
         (SUM(price * quantity) / SUM(quantity)) AS average_cost
       ")
                                    .left_outer_joins(holdings: :transactions)
-                                   .where(['portfolio_id = ?', params[:id]])
+                                   .where(portfolio_id: params[:id])
                                    .group('holdings.id')
                                    .order('holdings.symbol')
   end
+  # rubocop:enable Metrics/MethodLength
 
   # GET /portfolios/new (new_portfolio)
   def new

@@ -13,6 +13,7 @@ class TransactionsController < ApplicationController
   end
 
   # POST /holdings/1/transactions, prefix: holding_transactions
+  # rubocop:disable Metrics/MethodLength
   def create
     @holding = Holding.find(params[:holding_id])
     @transaction = Transaction.new(transaction_params)
@@ -27,6 +28,7 @@ class TransactionsController < ApplicationController
       end
     end
   end
+  # rubocop:enable Metrics/MethodLength
 
   # PATCH/PUT /transactions/1
   def update
