@@ -3,7 +3,7 @@ class PortfoliosController < ApplicationController
 
   # GET /portfolios (portfolios)
   def index
-    # Update the market price for all holdings every time Portfolio#index is loaded.
+    # Updates the last price for all holdings.
     Holding.all.each do |holding|
       last_price = get_last_price(holding)
       holding.update(last_price: last_price)
