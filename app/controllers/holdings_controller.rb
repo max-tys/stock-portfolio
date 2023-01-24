@@ -1,3 +1,4 @@
+# Handles requests pertaining to holdings within a portfolio.
 class HoldingsController < ApplicationController
   before_action :set_holding, only: %i[ show destroy ]
 
@@ -28,7 +29,7 @@ class HoldingsController < ApplicationController
       if @holding.save
         format.html { redirect_to portfolio_path(@portfolio), notice: "Added #{@holding.symbol} to portfolio." }
       else
-        # Reassign @portfolio because @portfolio.holdings.build adds an entry to the @portfolio.holdings object, even if @holding isn't saved to the database.
+        # Reassign @portfolio to remove the invalid holding that was temporarily added to it.
         @portfolio = Portfolio.find(params[:portfolio_id])
         # https://api.rubyonrails.org/classes/ActionView/Template.html#method-i-render
         format.html { render :new, status: :unprocessable_entity }
