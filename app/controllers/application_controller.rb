@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def get_last_price(holding)
-    Rails.cache.fetch(holding.id.to_s, expires_in: 30.seconds) do
+    Rails.cache.fetch(holding.id.to_s, expires_in: 60.seconds) do
       finnhub_client.quote(holding.symbol).c
     rescue FinnhubRuby::ApiError
       '-'
