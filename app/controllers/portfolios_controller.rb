@@ -28,17 +28,17 @@ class PortfoliosController < ApplicationController
     # Portfolio#find returns a single Portfolio object. This serves as a model for helpers that generate paths.
     @portfolio = set_portfolio
 
-    # Returns a Relation object, which is a collection of multiple Portfolio objects.
-    @portfolio_holdings = Portfolio.select("
-        holdings.id,
-        holdings.symbol,
-        SUM(quantity) AS quantity,
-        (SUM(price * quantity) / SUM(quantity)) AS average_cost
-      ")
-                                   .left_outer_joins(holdings: :transactions)
-                                   .where(id: params[:id])
-                                   .group('holdings.id')
-                                   .order('holdings.symbol')
+    # Returns a Relation object, which is a collection of multiple Holding objects.
+    @portfolio_holdings = Holding.select("
+      holdings.id,
+      holdings.symbol,
+      SUM(quantity) AS quantity,
+      (SUM(price * quantity) / SUM(quantity)) AS average_cost
+    ")
+      .left_outer_joins(:portfolio, :transactions)
+      .where(portfolio_id: params[:id])
+      .group('holdings.id')
+      .order('holdings.symbol')
   end
   # rubocop:enable Metrics/MethodLength
 
