@@ -83,7 +83,9 @@ Rails.application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new "app-name")
 
   if ENV['RAILS_LOG_TO_STDOUT'].present?
+    # rubocop:disable Style/GlobalStdStream
     logger           = ActiveSupport::Logger.new(STDOUT)
+    # rubocop:enable Style/GlobalStdStream
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end

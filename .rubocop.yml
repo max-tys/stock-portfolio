@@ -6,6 +6,7 @@ AllCops:
     SuggestExtensions: false
     Exclude:
         - 'bin/**/*'
+        - 'config/puma.rb'
         - 'db/**/*'
         - 'test/**/*'
 
