@@ -1,3 +1,5 @@
+# All other controllers inherit from this class.
+# Handles Finnhub API calls.
 class ApplicationController < ActionController::Base
   require 'finnhub_ruby'
 
@@ -10,12 +12,10 @@ class ApplicationController < ActionController::Base
   end
 
   def get_last_price(holding)
-    Rails.cache.fetch("#{holding.id}", expires_in: 30.seconds) do
-      begin
-        finnhub_client.quote(holding.symbol).c
-      rescue FinnhubRuby::ApiError
-        '-'
-      end
+    Rails.cache.fetch(holding.id.to_s, expires_in: 30.seconds) do
+      finnhub_client.quote(holding.symbol).c
+    rescue FinnhubRuby::ApiError
+      '-'
     end
   end
   helper_method :get_last_price
