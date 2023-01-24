@@ -1,6 +1,6 @@
 # Handles requests pertaining to holdings within a portfolio.
 class HoldingsController < ApplicationController
-  before_action :set_holding, only: %i[ show destroy ]
+  before_action :set_holding, only: %i[show destroy]
 
   # GET /holdings/39
   def show
@@ -23,15 +23,12 @@ class HoldingsController < ApplicationController
     # Side effect: child object is linked to the collection until the collection is modified.
     @holding = @portfolio.holdings.build(holding_params)
 
-    # https://api.rubyonrails.org/classes/ActionController/MimeResponds.html#method-i-respond_to
     respond_to do |format|
-      # https://guides.rubyonrails.org/active_record_validations.html#when-does-validation-happen-questionmark
       if @holding.save
         format.html { redirect_to portfolio_path(@portfolio), notice: "Added #{@holding.symbol} to portfolio." }
       else
         # Reassign @portfolio to remove the invalid holding that was temporarily added to it.
         @portfolio = Portfolio.find(params[:portfolio_id])
-        # https://api.rubyonrails.org/classes/ActionView/Template.html#method-i-render
         format.html { render :new, status: :unprocessable_entity }
       end
     end
