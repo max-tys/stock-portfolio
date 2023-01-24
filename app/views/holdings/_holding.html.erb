@@ -1,27 +1,27 @@
 <% if portfolio_holdings.empty? %>
   <p>This portfolio is currently empty.</p>
 <% else %>
-<table>
-  <thead>
-    <tr>
-      <th>Symbol</th>
-      <th>Quantity</th>
-      <th>Average Cost</th>
-      <th>Last Price</th>
-      <th>Current Value</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% portfolio_holdings.each do |holding| %>
-      <% attributes = get_holding_attributes(holding) %>
-      <tr onclick="window.location='<%= holding_path(holding) %>';" style='cursor: pointer;'>
-        <td><%= attributes[:symbol] %></td>
-        <td><%= attributes[:quantity] %></td>
-        <td><%= attributes[:average_cost] %></td>
-        <td><%= attributes[:last_price] %></td>
-        <td><%= attributes[:current_value] %></td>
+  <table>
+    <thead>
+      <tr>
+        <th>Symbol</th>
+        <th>Quantity</th>
+        <th>Average Cost</th>
+        <th>Last Price</th>
+        <th>Current Value</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% portfolio_holdings.each do |holding| %>
+        <% attributes = get_holding_attributes(holding) %>
+        <tr onclick="window.location='<%= holding_path(holding) %>';" style='cursor: pointer;'>
+          <td><%= attributes[:symbol] %></td>
+          <td><%= attributes[:quantity] %></td>
+          <td><%= attributes[:average_cost] %></td>
+          <td><%= attributes[:last_price] %></td>
+          <td><%= attributes[:current_value] %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% end %>
