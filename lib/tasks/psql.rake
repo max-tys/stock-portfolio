@@ -1,4 +1,4 @@
 desc 'Start the PostgreSQL server'
-task :psql do
-   sh 'sudo service postgresql start'
+task psql: :environment do
+  sh 'sudo service postgresql start'
 end

@@ -1,3 +1,4 @@
+# Wraps holding attributes in a hash for ease of retrieval.
 module HoldingsHelper
   def get_holding_attributes(holding)
     quantity = get_quantity(holding)
@@ -20,11 +21,9 @@ module HoldingsHelper
   end
 
   def get_current_value(quantity, last_price)
-    begin
-      quantity * last_price
-    # Rescue if there are no transactions for a given holding
-    rescue NoMethodError
-      '-'
-    end
+    quantity * last_price
+  # Rescue if there are no transactions for a given holding
+  rescue NoMethodError
+    '-'
   end
 end

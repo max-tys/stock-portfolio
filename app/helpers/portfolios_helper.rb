@@ -1,3 +1,4 @@
+# # Wraps portfolio attributes in a hash for ease of retrieval.
 module PortfoliosHelper
   def get_portfolio_attributes(portfolio)
     amount_invested = get_amount_invested(portfolio)
@@ -21,10 +22,9 @@ module PortfoliosHelper
   end
 
   def get_delta(amount_invested, current_value)
-    begin
-      100 * (current_value - amount_invested) / amount_invested
-    rescue ZeroDivisionError
-      0
-    end
+    100 * (current_value - amount_invested) / amount_invested
+  # Rescue if there are no transactions within this portfolio.
+  rescue ZeroDivisionError
+    0
   end
 end
