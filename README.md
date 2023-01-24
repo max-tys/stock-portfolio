@@ -1,4 +1,4 @@
-# README
+# Stock Portfolio Tracker
 ## About
 This app tracks the performance of your stock portfolios.
 * Track stocks and equity, funds, ETFs, and more.
