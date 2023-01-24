@@ -36,7 +36,7 @@ class PortfoliosController < ApplicationController
         (SUM(price * quantity) / SUM(quantity)) AS average_cost
       ")
                                    .left_outer_joins(holdings: :transactions)
-                                   .where(portfolio_id: params[:id])
+                                   .where(id: params[:id])
                                    .group('holdings.id')
                                    .order('holdings.symbol')
   end
