@@ -82,5 +82,5 @@ test:
 production:
   <<: *default
   database: stock_portfolio_production
-  username: stock_portfolio
-  password: <%= ENV["STOCK_PORTFOLIO_DATABASE_PASSWORD"] %>
+  username: postgres
+  password: <%= $STOCK_PORTFOLIO_DATABASE_PASSWORD %>
