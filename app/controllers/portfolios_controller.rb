@@ -35,10 +35,10 @@ class PortfoliosController < ApplicationController
       SUM(quantity) AS quantity,
       (SUM(price * quantity) / SUM(quantity)) AS average_cost
     ")
-      .left_outer_joins(:transactions)
-      .where(portfolio_id: params[:id])
-      .group('holdings.id')
-      .order('holdings.symbol')
+                                 .left_outer_joins(:transactions)
+                                 .where(portfolio_id: params[:id])
+                                 .group('holdings.id')
+                                 .order('holdings.symbol')
   end
   # rubocop:enable Metrics/MethodLength
 
