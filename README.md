@@ -10,8 +10,8 @@ This app is built with Ruby on Rails and uses PostgreSQL as its database. Follow
 
 1. Install the following items in this sequence:
 
-   - Ruby 3.1.3 through the Ruby Version Manager (RVM): https://rvm.io/rvm/install.
-   - Rails 7.0.4: `gem install rails`.
+   - Ruby 3.2.2 through rbenv (preferred) or rvm.
+   - Rails 7.0.8: `gem install rails`.
    - PostgreSQL 12.12: https://www.postgresql.org/download/linux/ubuntu/.
    - Gems (all other dependencies for this project): `bundle install`.
 
