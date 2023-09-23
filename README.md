@@ -12,13 +12,13 @@ This app is built with Ruby on Rails and uses PostgreSQL as its database. Follow
 
    - Ruby 3.2.2 through rbenv (preferred) or rvm.
    - Rails 7.0.8: `gem install rails`.
-   - PostgreSQL 12.12: https://www.postgresql.org/download/linux/ubuntu/.
+   - PostgreSQL 14.
    - Gems (all other dependencies for this project): `bundle install`.
 
 2. Setup the database and relations:
 
    - Start the PostgreSQL server: `sudo service postgresql start`.
-   - Create the PostgreSQL databases: `rails db:create`.
+   - Create the PostgreSQL databases: `rails db:create`. Make sure the superuser has granted the privilege to create databases ("CREATEDB") to the selected user.
    - Migrate the PostgreSQL databases: `rails db:migrate`.
 
 3. Start the Rails server:
