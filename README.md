@@ -21,7 +21,9 @@ This app is built with Ruby on Rails and uses PostgreSQL as its database. Follow
    - Create the PostgreSQL databases: `rails db:create`. Make sure the superuser has granted the privilege to create databases ("CREATEDB") to the selected user.
    - Migrate the PostgreSQL databases: `rails db:migrate`.
 
-3. Start the Rails server:
+3. Get a free API from Finnhub and save it in Rails by running `rails credentials:edit`. Use `finnhub` as the namespace, and save the API as `api_key` under `finnhub`.
+
+4. Start the Rails server:
 
    - The server listens on port 3000 by default.
    - To start the server, run `rails s` or `rails server`.
