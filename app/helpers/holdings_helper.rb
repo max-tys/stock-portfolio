@@ -23,7 +23,7 @@ module HoldingsHelper
   def get_current_value(quantity, last_price)
     quantity * last_price
   # Rescue if there are no transactions for a given holding
-  rescue NoMethodError
+  rescue NoMethodError, TypeError
     '-'
   end
 end
